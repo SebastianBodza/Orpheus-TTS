@@ -82,14 +82,14 @@ class OrpheusModel:
                 start_token = torch.tensor([[ 128259]], dtype=torch.int64)
                 end_tokens = torch.tensor([[128009, 128260, 128261, 128257]], dtype=torch.int64)
                 all_input_ids = torch.cat([start_token, prompt_tokens.input_ids, end_tokens], dim=1)
-                prompt_string = self.tokenizer.decode(all_input_ids[0])
+                prompt_string = self.tokenizer.decode(all_input_ids[0], skip_special_tokens=False)
                 return prompt_string
             else:
                 prompt_tokens = self.tokenizer(prompt, return_tensors="pt")
                 start_token = torch.tensor([[ 128259]], dtype=torch.int64)
                 end_tokens = torch.tensor([[128009, 128260, 128261, 128257]], dtype=torch.int64)
                 all_input_ids = torch.cat([start_token, prompt_tokens.input_ids, end_tokens], dim=1)
-                prompt_string = self.tokenizer.decode(all_input_ids[0])
+                prompt_string = self.tokenizer.decode(all_input_ids[0], skip_special_tokens=False)
                 return prompt_string
 
  
